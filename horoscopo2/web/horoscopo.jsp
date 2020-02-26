@@ -14,7 +14,7 @@
     </head>
     <body>
         <h1>Horóscopo</h1>
-        <form action="horoscopo">
+        <form action="horoscopo" method="post">
             <label for="nombre">Nombre:</label><input type="text" 
                                                       id="nombre" name="nombre"/>
             <% ArrayList<String> meses = (ArrayList<String>) 
@@ -37,5 +37,9 @@
             </select>
             <input type="submit" value="Enviar">
         </form>
+             <% String signo = (String) request.getAttribute("signo");
+             if ( signo!=null ) { %>
+             <h1>Eres del signo: <%=signo%></h1>
+             <% } %> 
     </body>
 </html>

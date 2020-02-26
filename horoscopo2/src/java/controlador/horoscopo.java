@@ -76,9 +76,25 @@ public class horoscopo extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
-    }
-    
+        ArrayList<String> meses = Utilidades.getMeses();
+        ArrayList<String> dias = Utilidades.getDias();
+        request.setAttribute("meses", meses);
+        request.setAttribute("dias", dias);
+        String nombre = request.getParameter("nombre");
+
+        String mes = request.getParameter("mes");
+        String dia = request.getParameter("dia");
+        String signo = Utilidades.getHoroscopo(Integer.parseInt(dia),
+                Integer.parseInt(mes));
+        request.setAttribute("nombre", nombre);
+        request.setAttribute("dia", dia);
+        request.setAttribute("mes", mes);
+        request.setAttribute("signo", signo);
+        request.getRequestDispatcher("horoscopo.jsp").forward(request, response);
+        
+        
+    }  
+
     /**
      * Returns a short description of the servlet.
      *
