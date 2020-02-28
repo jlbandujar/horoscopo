@@ -40,7 +40,12 @@ public class Utilidades {
                 break;
             case 2: 
                 if ( dia>20 ) {
-                    signo="Piscis";
+                    if ( dia<=29 ) {
+                        signo="Piscis";
+                    }
+                    else {
+                        signo = "Error de fecha";
+                    }
                 } else {
                     signo="Acuario";
                 }
